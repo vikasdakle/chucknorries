@@ -1,0 +1,55 @@
+
+.backgrouncolor{
+    background-color: #182b3a;
+background-image: linear-gradient(315deg, #182b3a 0%, #20a4f3 74%);
+
+/* background-color: #2a2a72;
+background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%); */
+}
+
+.box:hover {
+    transform: scale(0.9);
+}
+
+.box { 
+    transition: 0.1s;
+}
+
+/* .box:hover {
+    transform: scale(0.7);
+} */
+
+.bgmodal{
+  /* backgrouncolor: linear-gradient(90deg,#2c5364,#203a43,#0f2027); */
+  background-image: linear-gradient(90deg, rgb(44, 83, 100), rgb(32, 58, 67), rgb(15, 32, 39));
+}
+
+
+.animation {
+    font-size: 36px;
+    font-weight: bold;
+    animation: moveUpDown 0.9s ease-in-out infinite;
+  }
+  
+  @keyframes moveUpDown {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .scroll-container {
+    width:500px; //Adjust the width as per your requirement
+    /* height: 200px; Adjust the height as per your requirement */
+    overflow-y: auto; /* Enable vertical scrollbar when content overflows */
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .scroll-text {
+    margin: 0;
+    white-space: pre-wrap; /* Preserve line breaks */
+  }
