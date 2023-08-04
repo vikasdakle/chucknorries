@@ -1,65 +1,8 @@
-// import React, { useState, useEffect } from 'react';
-
-// function App() {
-//   const [categories, setCategories] = useState([]);
-//   const [selectedCategory, setSelectedCategory] = useState('');
-//   const [joke, setJoke] = useState('');
-
-//   useEffect(() => {
-//     fetch('https://api.chucknorris.io/jokes/categories')
-//       .then((response) => response.json())
-//       .then((data) => setCategories(data))
-//       .catch((error) => console.error('Error fetching categories:', error));
-//   }, []);
-
-//   useEffect(() => {
-//     if (selectedCategory) {
-//       fetch(`https://api.chucknorris.io/jokes/random?category=${selectedCategory}`)
-//         .then((response) => response.json())
-//         .then((data) => setJoke(data.value))
-//         .catch((error) => console.error('Error fetching joke:', error));
-//     }
-//   }, [selectedCategory]);
-
-//   const handleCategoryChange = (event) => {
-//     setSelectedCategory(event.target.value);
-//   };
-
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <h1>Chuck Norris Jokes</h1>
-//         <select value={selectedCategory} onChange={handleCategoryChange}>
-//           <option value="">Select a category</option>
-//           {categories.map((category) => (
-//             <option key={category} value={category}>
-//               {category}
-//             </option>
-//           ))}
-//         </select>
-//         {joke && <p>{joke}</p>}
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
 
 import React, { useEffect, useState } from 'react'
 import '../src/style.css'
 
 const App = () => {
-
-  // const [selectedCategory, setSelectedCategory] = useState('');
-  // useEffect(() => {
-  //   if (selectedCategory) {
-  //     fetch(`https://api.chucknorris.io/jokes/random?category=${selectedCategory}`)
-  //       .then((response) => response.json())
-  //       .then((data) => setJoke(data.value))
-  //       .catch((error) => console.error('Error fetching joke:', error));
-  //   }
-  // }, [selectedCategory]);
 
   const [isLoading, setIsLoading] = useState(false)
   const [categories, setCategories] = useState([]);
@@ -76,10 +19,6 @@ const App = () => {
   const getjokes = async (item) => {
     setIsLoading(true)
     setSelectedCat({ item })
-
-    // const result = await fetch(`https://api.chucknorris.io/jokes/random?category=${capitalizeWords(selectedCat.item)}`)
-    // const result = await fetch(`https://api.chucknorris.io/jokes/random?category=${selectedCat.item}`)
-    // const result = await fetch(`https://api.chucknorris.io/jokes/random?category=${capitalizeWords(selectedCat.item)}`)
     setTimeout(async () => {
       const result = await fetch(`https://api.chucknorris.io/jokes/random?${capitalizeWords(selectedCat.item)}`)
         .then((response) => response.json())
@@ -87,7 +26,6 @@ const App = () => {
         .catch((error) => console.error('Error fetching joke:', error));
       setIsLoading(false)
     }, 500);
-    // console.log(result)
   }
 
 
