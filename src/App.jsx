@@ -23,7 +23,7 @@ const App = () => {
     dispatch(chucknorriescategory())
   }, []);
 
-  return <div className='backgrouncolor p-4'>
+  return <div className='backgrouncolor p-4 '>
     <div className="container">
       <div className="text-center">
         <h4 className='text-success fw-bold pt-3 animation' style={{ fontSize: "40px" }}>Chuck Norries</h4>
@@ -37,7 +37,7 @@ const App = () => {
           }
         </div>
         {
-          datanorries.map(item => <div key={item} className="col-sm-3 mt-3">
+          datanorries.map(item => <div key={item} className="col-lg-3 col-md-4 mt-3">
             <div class="card box" style={{ borderStyle: "none", }}>
               <button onClick={e => getjokes(item)} data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button" class="btn btn-light p-5" style={{ borderStyle: "none", height: "180px" }}>
                 <span className='fw-bold' style={{ fontSize: "30px", color: "#1E3A8A" }}>{capitalizeWords(item)}</span>
@@ -50,28 +50,32 @@ const App = () => {
 
         {
           <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-              <div class="modal-content text-light bgmodal">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg   modal-dialog-centered">
+              <div class="modal-content text-light bgmodal  ">
                 <div class="modal-header border-0">
                   <div className='fw-bold text-center' style={{ marginLeft: "45%", fontSize: "35px", color: "#FFFFFF" }}>
                     {capitalizeWords(selectedCat.item)}
                   </div>
                   <button type="button" class="btn-close   " style={{ backgroundColor: "white" }} data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body text-light fw-bold text-center " style={{ fontSize: "25px" }}>
-                  {
-                    loading ? <div class="spinner-border text-primary" style={{ height: "60px", width: "60px" }} role="status">
-                      <span class="sr-only"></span>
+                <div class="modal-body text-light fw-bold text-center  border-1 border-success" style={{ fontSize: "25px" }}>
+                  <div style={{ border: "2px solid black" }}>
+
+                    {
+                      loading ? <div class="spinner-border text-primary" style={{ height: "60px", width: "60px" }} role="status">
+                        <span class="sr-only"></span>
+                      </div>
+                        : <>
+                          <p style={{ fontSize: "35px", color: "#DBEAFE" }}>"
+                            {dataJokes}
+                            "
+                          </p>
+                        </>
+                    }
+
+                    <div>
+                      <button type="button" style={{ backgroundColor: "#1D4ED8", color: "#FFFFFF" }} class="btn  btn-lg w-75 mt-3 mb-3" onClick={e => getjokes(selectedCat.item)}>Next Joke</button>
                     </div>
-                      : <>
-                        <p style={{ fontSize: "35px", color: "#DBEAFE" }}>"
-                          {dataJokes}
-                          "
-                        </p>
-                      </>
-                  }
-                  <div>
-                    <button type="button" style={{ backgroundColor: "#1D4ED8", color: "#FFFFFF" }} class="btn  btn-lg w-75 mt-3" onClick={e => getjokes(selectedCat.item)}>Next Joke</button>
                   </div>
                 </div>
               </div>
